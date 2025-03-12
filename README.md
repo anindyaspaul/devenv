@@ -1,6 +1,6 @@
 # devenv
 
-Everything related to setting up my personal developer environment.
+Everything related to setting up my personal development environment.
 
 ## Bootstrap
 
