@@ -1,0 +1,18 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+all: git pnpm
+
+# Install git version control system
+git:
+    sudo apt update
+    sudo apt install git
+
+# Install pnpm - Fast, disk space efficient package manager
+pnpm:
+    wget -qO- https://get.pnpm.io/install.sh | sh -
+
+# Install nodejs using pnpm
+node: pnpm
+    pnpm env use --global lts

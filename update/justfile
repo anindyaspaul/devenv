@@ -1,0 +1,7 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Update apt packages
+apt:
+    sudo apt update
