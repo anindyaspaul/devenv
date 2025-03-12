@@ -1,6 +1,6 @@
 # devenv
 
-Everything related to managing my personal development environment.
+🧑‍💻 Everything related to managing my personal development environment.
 
 ## Bootstrap
 
