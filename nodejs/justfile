@@ -1,0 +1,17 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install and use latest LTS using pnpm
+install: pnpm lts
+
+# Update pnpm package manager
+update: pnpm
+
+# Install and use latest LTS
+lts:
+    pnpm env use --global lts
+
+# Install pnpm package manager
+pnpm:
+    curl -fsSL https://get.pnpm.io/install.sh | sh -

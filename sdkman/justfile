@@ -1,0 +1,14 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install sdkman
+install:
+    curl -s "https://get.sdkman.io" | bash
+
+# Update sdkman
+update:
+    @echo "Run the following commands to update\n" \
+          "  sdk selfupdate\n" \
+          "  sdk update"
+
