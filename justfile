@@ -2,6 +2,8 @@
 mod sdkman
 # nodejs toolchain
 mod nodejs
+# gimp image editor
+mod gimp
 
 # List available recipes
 help:
