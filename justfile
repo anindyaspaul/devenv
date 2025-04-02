@@ -4,6 +4,8 @@ mod sdkman
 mod nodejs
 # gimp image editor
 mod gimp
+# mocca stuff
+mod mocca
 
 # List available recipes
 help:
