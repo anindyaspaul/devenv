@@ -1,3 +1,5 @@
+# set of base tools
+mod base
 # sdkman for java toolchain
 mod sdkman
 # nodejs toolchain

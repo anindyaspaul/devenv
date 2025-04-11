@@ -1,0 +1,8 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install base tools
+install:
+    sudo apt install cloc
+
