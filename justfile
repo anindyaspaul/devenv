@@ -1,5 +1,7 @@
 # set of base tools
 mod base
+# neovim
+mod nvim
 # sdkman for java toolchain
 mod sdkman
 # nodejs toolchain
@@ -7,7 +9,7 @@ mod nodejs
 # gimp image editor
 mod gimp
 # mocca stuff
-mod mocca
+mod? mocca
 
 # List available recipes
 help:
@@ -20,4 +22,3 @@ install module:
 # Update module using update recipe
 update module:
     just {{module}} update
-

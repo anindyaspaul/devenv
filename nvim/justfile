@@ -1,0 +1,12 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install neovim
+install:
+    sudo dnf -y install neovim
+    mkdir -p "$HOME/.config/nvim"
+    stow -t "$HOME" -v config
+
+test:
+    echo "$HOME"
