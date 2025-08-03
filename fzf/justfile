@@ -1,0 +1,29 @@
+conf_line := "eval \"$(fzf --bash)\"" 
+bashrc := read(home_dir() / ".bashrc")
+bashrc_cleaned := trim(replace(bashrc, conf_line, ""))
+bashrc_configured := bashrc_cleaned + "\n\n" + conf_line
+
+
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install fzf
+install:
+    sudo dnf install -y fzf
+
+# Configure fzf
+configure:
+    @echo "Configuring bashrc."
+    @echo {{ quote(bashrc_configured) }} > "$HOME/.bashrc"
+
+# Post-install setup
+post-install:
+
+# Factory reset
+reset:
+    @echo "Cleaning up bashrc."
+    @echo {{ quote(bashrc_cleaned) }} > "$HOME/.bashrc"
+
+# Remove fzf
+remove:
