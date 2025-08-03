@@ -1,0 +1,22 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install alacritty
+install:
+    @echo "Installing alacritty"
+    sudo dnf install -y alacritty
+
+# Configure alacritty
+configure:
+    @echo "Stowing config files"
+    mkdir -p "$HOME/.config/alacritty"
+    stow -t "$HOME" -v config
+
+# Post-install setup
+post-install:
+
+# Factory reset tmux
+reset:
+    @echo "Removing config files"
+    rm -rf "$HOME/.config/alacritty"
