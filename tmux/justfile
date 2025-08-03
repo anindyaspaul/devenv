@@ -1,0 +1,27 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install tmux
+install:
+    @echo "Installing tmux"
+    sudo dnf install -y tmux
+
+# Configure tmux
+configure:
+    @echo "Stowing config files"
+    mkdir -p "$HOME/.config/tmux"
+    stow -t "$HOME" -v config
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    tmux source "$HOME/.config/tmux/tmux.conf"
+
+
+# Post-install setup
+post-install:
+
+# Factory reset tmux
+reset:
+    @echo "Removing config files"
+    rm -rf "$HOME/.config/tmux"
+    @echo "Removing .tmux directory"
+    rm -rf "$HOME/.tmux"
