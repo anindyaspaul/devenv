@@ -1,0 +1,22 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install ghostty
+install:
+    @echo "Installing ghostty"
+    sudo dnf install -y ghostty
+
+# Configure ghostty
+configure:
+    @echo "Stowing config files"
+    mkdir -p "$HOME/.config/ghostty"
+    stow -t "$HOME" -v config
+
+# Post-install setup of ghostty
+post-install:
+
+# Factory reset ghostty
+reset:
+    @echo "Removing config files"
+    rm -rf "$HOME/.config/ghostty"
