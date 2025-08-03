@@ -10,8 +10,7 @@ install:
 # Configure alacritty
 configure:
     @echo "Stowing config files"
-    mkdir -p "$HOME/.config/alacritty"
-    stow -t "$HOME" -v config
+    stow .
 
 # Post-install setup
 post-install:
@@ -19,4 +18,4 @@ post-install:
 # Factory reset tmux
 reset:
     @echo "Removing config files"
-    rm -rf "$HOME/.config/alacritty"
+    stow --delete .

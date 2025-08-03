@@ -1,8 +1,3 @@
-conf_line := "eval \"$(" + home_dir() + "/.local/bin/mise activate bash)\""
-bashrc := read(home_dir() / ".bashrc")
-bashrc_cleaned := trim(replace(bashrc, conf_line, ""))
-bashrc_configured := bashrc_cleaned + "\n\n" + conf_line
-
 # List available recipes
 help:
     @just --list --unsorted
@@ -15,11 +10,7 @@ install:
 # Configure mise
 configure:
     @echo "Stowing config files"
-    mkdir -p "$HOME/.config/mise"
-    stow -t "$HOME" -v config
-
-    @echo "Configuring bashrc."
-    @echo {{ quote(bashrc_configured) }} > "$HOME/.bashrc"
+    stow .
 
 # Post-install
 post-install:
@@ -33,9 +24,6 @@ update:
 # Remove mise
 remove:
     @echo "Cleaning up bashrc."
-    @echo {{ quote(bashrc_cleaned) }} > "$HOME/.bashrc"
-
-    @echo "Removing config files"
-    rm -rf "$HOME/.config/mise"
+    stow --delete .
     mise implode
     @echo "Close and reopen shell"

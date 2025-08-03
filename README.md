@@ -6,7 +6,26 @@
 
 A newly installed system needs to be bootstrapped.
 
-```sh 
+### Clone repo
+
+1. Setup SSH keys. Based on [this guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+
+```shell
+ssh-keygen -t rsa -b 4096 -C "anindya@hostname"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+```
+
+2. Add the ssh key to github account and clone the repo.
+
+```shell
+git clone --recurse-submodules -j8 git@github.com:anindyaspaul/devenv.git
+```
+
+### Bootstrap
+
+```shell
 ./boostrap.sh
 ```
 
@@ -15,6 +34,8 @@ A newly installed system needs to be bootstrapped.
 Use `just` command runner to manage the environment.
 
 Run `just` to see available recipes.
+
+### Workflow
 
 Run `just install` to install tools.
 

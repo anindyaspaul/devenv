@@ -1,13 +1,3 @@
-conf_line := """
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR=\"$HOME/.sdkman\"
-[[ -s \"$HOME/.sdkman/bin/sdkman-init.sh\" ]] && source \"$HOME/.sdkman/bin/sdkman-init.sh\"
-"""
-
-bashrc := read(home_dir() / ".bashrc")
-bashrc_cleaned := trim(replace(bashrc, conf_line, ""))
-bashrc_configured := bashrc_cleaned + "\n\n" + conf_line
-
 # List available recipes
 help:
     @just --list --unsorted
@@ -17,11 +7,6 @@ install:
     @echo "Installing sdkman"
     curl -s "https://get.sdkman.io" | bash
 
-# Configure sdkman
-configure:
-    @echo "Configuring bashrc."
-    @echo {{ quote(bashrc_configured) }} > "$HOME/.bashrc"
-
 # Update sdkman
 update:
     @echo "Run the following commands to update\n" \
@@ -30,8 +15,6 @@ update:
 
 # Remove sdkman
 remove:
-    @echo "Cleaning up bashrc."
-    @echo {{ quote(bashrc_cleaned) }} > "$HOME/.bashrc"
     @echo "Removing .sdkman directory"
     rm -rf "$HOME/.sdkman"
 

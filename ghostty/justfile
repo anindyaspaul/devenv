@@ -10,8 +10,7 @@ install:
 # Configure ghostty
 configure:
     @echo "Stowing config files"
-    mkdir -p "$HOME/.config/ghostty"
-    stow -t "$HOME" -v config
+    stow .
 
 # Post-install setup of ghostty
 post-install:
@@ -19,4 +18,4 @@ post-install:
 # Factory reset ghostty
 reset:
     @echo "Removing config files"
-    rm -rf "$HOME/.config/ghostty"
+    stow --delete .

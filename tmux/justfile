@@ -10,8 +10,7 @@ install:
 # Configure tmux
 configure:
     @echo "Stowing config files"
-    mkdir -p "$HOME/.config/tmux"
-    stow -t "$HOME" -v config
+    stow .
     git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
     tmux source "$HOME/.config/tmux/tmux.conf"
 
@@ -22,6 +21,6 @@ post-install:
 # Factory reset tmux
 reset:
     @echo "Removing config files"
-    rm -rf "$HOME/.config/tmux"
+    stow --delete .
     @echo "Removing .tmux directory"
     rm -rf "$HOME/.tmux"

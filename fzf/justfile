@@ -1,9 +1,3 @@
-conf_line := "eval \"$(fzf --bash)\"" 
-bashrc := read(home_dir() / ".bashrc")
-bashrc_cleaned := trim(replace(bashrc, conf_line, ""))
-bashrc_configured := bashrc_cleaned + "\n\n" + conf_line
-
-
 # List available recipes
 help:
     @just --list --unsorted
@@ -15,7 +9,7 @@ install:
 # Configure fzf
 configure:
     @echo "Configuring bashrc."
-    @echo {{ quote(bashrc_configured) }} > "$HOME/.bashrc"
+    stow .
 
 # Post-install setup
 post-install:
@@ -23,7 +17,7 @@ post-install:
 # Factory reset
 reset:
     @echo "Cleaning up bashrc."
-    @echo {{ quote(bashrc_cleaned) }} > "$HOME/.bashrc"
+    stow --delete .
 
 # Remove fzf
 remove:

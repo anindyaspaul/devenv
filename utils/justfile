@@ -8,6 +8,14 @@ help:
 install:
     just _install-{{ distro }}
 
+_install-ubuntu:
+    sudo apt install -y \
+      batcat \
+      cloc \
+      fd-find \
+      lazygit \
+      ;
+
 _install-fedora:
     sudo dnf copr enable -y \
       atim/lazygit \

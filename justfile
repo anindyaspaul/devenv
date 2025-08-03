@@ -1,31 +1,17 @@
-# alacritty
 mod alacritty
-# set of base tools
-mod base
-# bashrc modifications
 mod bashrc
-# dircolors
 mod dircolors
-# fonts
 mod fonts
-# fzf
 mod fzf
-# ghostty
 mod ghostty
-# mise version manager
 mod mise
-# mocca stuff
-mod? mocca
-# nodejs toolchain
+mod mocca
 mod nodejs
-# neovim
 mod nvim
-# sdkman for java toolchain
 mod sdkman
-# starship shell prompt
 mod starship
-# tmux
 mod tmux
+mod utils
 
 # List available recipes
 help:
@@ -42,6 +28,10 @@ configure module:
 # Update module using update recipe
 update module:
     just {{module}} update
+
+# Factory reset module using reset recipe
+reset module:
+    just {{module}} reset
 
 # Remove module using remove recipe
 remove module:

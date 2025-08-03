@@ -1,5 +1,5 @@
 conf_line := """
-for FILE in $HOME/bashrc.d/*; do
+for FILE in $HOME/.config/bashrc/*; do
     source $FILE
 done
 """
@@ -13,19 +13,20 @@ help:
 
 # Install bashrc modifications
 install:
-    mkdir -p "$HOME/bashrc.d"
 
 # Configure bashrc
 configure:
     @echo "Configuring bashrc."
     @echo {{ quote(bashrc_configured) }} > "$HOME/.bashrc"
 
-    stow -t "$HOME" -v config
+    @echo "Stowing bashrc."
+    mkdir -p "$HOME/.config/bashrc"
+    stow .
 
 # Reset bashrc modifications
 reset:
     @echo "Cleaning up bashrc."
     @echo {{ quote(bashrc_cleaned) }} > "$HOME/.bashrc"
 
-    stow -t "$HOME" -v --delete config
+    stow --delete .
 

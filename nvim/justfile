@@ -9,7 +9,7 @@ install:
 # Configure LazyVim distro
 configure:
     git clone https://github.com/LazyVim/starter "$HOME/.config/nvim"
-    stow -t "$HOME" -v config
+    stow .
 
 # Factory reset neovim config
 reset:
