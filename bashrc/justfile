@@ -1,0 +1,31 @@
+conf_line := """
+for FILE in $HOME/bashrc.d/*; do
+    source $FILE
+done
+"""
+bashrc := read(home_dir() / ".bashrc")
+bashrc_cleaned := trim(replace(bashrc, conf_line, ""))
+bashrc_configured := bashrc_cleaned + "\n\n" + conf_line
+
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install bashrc modifications
+install:
+    mkdir -p "$HOME/bashrc.d"
+
+# Configure bashrc
+configure:
+    @echo "Configuring bashrc."
+    @echo {{ quote(bashrc_configured) }} > "$HOME/.bashrc"
+
+    stow -t "$HOME" -v config
+
+# Reset bashrc modifications
+reset:
+    @echo "Cleaning up bashrc."
+    @echo {{ quote(bashrc_cleaned) }} > "$HOME/.bashrc"
+
+    stow -t "$HOME" -v --delete config
+
