@@ -1,0 +1,17 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install fonts
+install:
+    @echo "Installing fonts"
+    mkdir -p "$HOME/.config/fontconfig"
+    mkdir -p "$HOME/.local/share/fonts"
+    stow -t "$HOME" -v config
+    fc-cache -fv
+
+# Remove installed fonts
+remove:
+    @echo "Removing installed fonts"
+    stow -t "$HOME" --delete -v config
+    fc-cache -fv
