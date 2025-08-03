@@ -1,0 +1,33 @@
+conf_line := "eval \"$(starship init bash)\""
+bashrc := read(home_dir() / ".bashrc")
+bashrc_cleaned := trim(replace(bashrc, conf_line, ""))
+bashrc_configured := bashrc_cleaned + "\n\n" + conf_line
+
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install starship
+install:
+    @echo "Installing starship"
+    curl -sS https://starship.rs/install.sh | sh
+
+# Configure starship
+configure:
+    @echo "Configuring bashrc."
+    @echo {{ quote(bashrc_configured) }} > "$HOME/.bashrc"
+    @echo "Stowing config file"
+    stow -t "$HOME" -v config
+
+# Post-install
+post-install:
+
+# Update starship
+update: install
+
+# Remove starship
+remove:
+    @echo "Cleaning up bashrc."
+    @echo {{ quote(bashrc_cleaned) }} > "$HOME/.bashrc"
+    @echo "Removing starship binary"
+    sudo sh -c 'rm "$(command -v 'starship')"'
