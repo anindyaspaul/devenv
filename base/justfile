@@ -1,9 +1,14 @@
+distro := shell("cat /etc/*release | grep ^ID | cut -d = -f 2")
+
 # List available recipes
 help:
     @just --list --unsorted
 
 # Install base tools
 install:
+    just _install-{{ distro }}
+
+_install-fedora:
     sudo dnf copr enable -y \
       atim/lazygit \
       ;
@@ -14,5 +19,4 @@ install:
       fd-find \
       lazygit \
       ;
-
 
