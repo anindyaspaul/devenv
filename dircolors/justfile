@@ -1,0 +1,34 @@
+local_repo := "$HOME/.local/share/dircolors"
+dir_colors_path := local_repo / "src/dir_colors"
+
+conf_line := "test -r " + dir_colors_path + " && eval $(dircolors " + dir_colors_path + ")"
+bashrc := read(home_dir() / ".bashrc")
+bashrc_cleaned := trim(replace(bashrc, conf_line, ""))
+bashrc_configured := bashrc_cleaned + "\n\n" + conf_line
+
+
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install nord dircolors
+install:
+    git clone git@github.com:nordtheme/dircolors.git {{ local_repo }}
+
+# Configure nord dircolors
+configure:
+    @echo "Configuring bashrc."
+    @echo {{ quote(bashrc_configured) }} > "$HOME/.bashrc"
+
+# Post-install setup
+post-install:
+
+# Factory reset
+reset: remove
+
+# Remove nord dircolors
+remove:
+    @echo "Cleaning up bashrc."
+    @echo {{ quote(bashrc_cleaned) }} > "$HOME/.bashrc"
+    @echo "Removing nord dircolors directory"
+    rm -rf {{ local_repo }}
