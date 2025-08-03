@@ -16,6 +16,17 @@ Use `just` command runner to manage the environment.
 
 Run `just` to see available recipes.
 
+Run `just install` to install tools.
+
+Exit the shell.
+
+Run `just configure` to configure the installed tools.
+
+Exit the shell.
+
+Run `just post-install` to perform post-installation setup.
+
+
 ## Guidelines
 
 - Organize recipes and configurations by grouping them into modules.

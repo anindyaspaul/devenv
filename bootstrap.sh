@@ -5,13 +5,10 @@ distro=$(cat /etc/*release | grep ^ID | cut -d "=" -f 2)
 
 echo "Detected distro: $distro"
 
-if [ "$distro" == "fedora" ];
-then
+if [ "$distro" == "fedora" ]; then
   sudo dnf -y install \
     stow \
-    just;
-  stow just;
+    just
 else
-  sudo snap install just --classic;
+  sudo snap install just --classic
 fi
-
