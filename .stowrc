@@ -1,4 +1,4 @@
---target=$HOME/.config
---ignore='justfile'
---ignore='.stowrc'
+--target $HOME/.config
+--ignore justfile
+--ignore .stowrc
 --verbose

@@ -4,6 +4,7 @@ mod dircolors
 mod fonts
 mod fzf
 mod ghostty
+mod homebrew
 mod mise
 mod mocca
 mod nodejs

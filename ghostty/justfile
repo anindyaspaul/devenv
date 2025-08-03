@@ -1,3 +1,5 @@
+distro := shell("cat /etc/os-release | grep ^ID= | cut -d = -f 2")
+
 # List available recipes
 help:
     @just --list --unsorted
@@ -5,6 +7,12 @@ help:
 # Install ghostty
 install:
     @echo "Installing ghostty"
+    just _install-{{ distro }}
+
+_install-ubuntu:
+    sudo snap install ghostty --classic
+
+_install-fedora:
     sudo dnf install -y ghostty
 
 # Configure ghostty

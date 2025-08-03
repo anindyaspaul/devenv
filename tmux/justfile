@@ -1,3 +1,5 @@
+distro := shell("cat /etc/os-release | grep ^ID= | cut -d = -f 2")
+
 # List available recipes
 help:
     @just --list --unsorted
@@ -5,15 +7,21 @@ help:
 # Install tmux
 install:
     @echo "Installing tmux"
+    just _install-{{ distro }}
+
+_install-ubuntu:
+    sudo apt install tmux
+
+_install-fedora:
     sudo dnf install -y tmux
 
 # Configure tmux
 configure:
     @echo "Stowing config files"
+    mkdir "$HOME/.config/tmux"
     stow .
     git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-    tmux source "$HOME/.config/tmux/tmux.conf"
-
+    @echo "Start tmux and run ctrl-b+I"
 
 # Post-install setup
 post-install:
@@ -22,5 +30,6 @@ post-install:
 reset:
     @echo "Removing config files"
     stow --delete .
+    rm -rf "$HOME/.config/tmux"
     @echo "Removing .tmux directory"
     rm -rf "$HOME/.tmux"

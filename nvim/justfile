@@ -1,9 +1,17 @@
+distro := shell("cat /etc/os-release | grep ^ID= | cut -d = -f 2")
+
 # List available recipes
 help:
     @just --list --unsorted
 
 # Install neovim
 install:
+    just _install-{{ distro }}
+
+_install-ubuntu:
+    sudo snap install --classic nvim
+
+_install-fedora:
     sudo dnf -y install neovim
 
 # Configure LazyVim distro

@@ -1,5 +1,7 @@
 # Aliases
 alias v=nvim
+alias cat=batcat
+export BAT_THEME=Nord
 
 alias ll='ls -lah'
 alias x='clear && ls -lah'

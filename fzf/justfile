@@ -1,23 +1,23 @@
+distro := shell("cat /etc/os-release | grep ^ID= | cut -d = -f 2")
+
 # List available recipes
 help:
     @just --list --unsorted
 
 # Install fzf
 install:
-    sudo dnf install -y fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+    $HOME/.fzf/install
 
 # Configure fzf
 configure:
-    @echo "Configuring bashrc."
-    stow .
 
 # Post-install setup
 post-install:
 
 # Factory reset
-reset:
-    @echo "Cleaning up bashrc."
-    stow --delete .
+reset: remove
 
 # Remove fzf
 remove:
+    rm -rf $HOME/.fzf $HOME/.fzf.bash

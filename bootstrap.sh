@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Extract distro ID
-distro=$(cat /etc/*release | grep ^ID | cut -d "=" -f 2)
+distro=$(cat /etc/os-release | grep ^ID= | cut -d "=" -f 2)
 
 echo "Detected distro: $distro"
 
@@ -14,7 +14,7 @@ case "$distro" in
     stow \
     wget \
     ;
-  sudo snap install just --classic
+  sudo snap install --classic just
   ;;
 
 "fedora")
@@ -27,6 +27,9 @@ case "$distro" in
   ;;
 
 esac
+
+git config user.name "Anindya Sundar Paul"
+git config user.email "a@anindyaspaul.com"
 
 # Symlink stowrc file in home directory
 # This provides default stow configuration

@@ -30,3 +30,5 @@ reset:
 
     stow --delete .
 
+test:
+    @echo $(realpath .)

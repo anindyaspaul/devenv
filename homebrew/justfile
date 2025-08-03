@@ -1,0 +1,21 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install homebrew
+install:
+    @echo "Installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Configure homebrew
+configure:
+    @echo "Stowing config files"
+    stow .
+
+# Post-install
+post-install:
+
+# Remove mise
+remove:
+    @echo "Cleaning up bashrc."
+    stow --delete .

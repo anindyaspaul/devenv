@@ -1,4 +1,4 @@
-distro := shell("cat /etc/*release | grep ^ID | cut -d = -f 2")
+distro := shell("cat /etc/os-release | grep ^ID= | cut -d = -f 2")
 
 # List available recipes
 help:
@@ -10,9 +10,15 @@ install:
 
 _install-ubuntu:
     sudo apt install -y \
-      batcat \
+      bat \
+      build-essential \
       cloc \
+      dconf-editor \
       fd-find \
+      ripgrep \
+      gnome-tweaks \
+      ;
+    brew install \
       lazygit \
       ;
 
