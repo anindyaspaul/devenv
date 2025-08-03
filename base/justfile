@@ -4,5 +4,15 @@ help:
 
 # Install base tools
 install:
-    sudo apt install cloc
+    sudo dnf copr enable -y \
+      atim/lazygit \
+      ;
+
+    sudo dnf install -y \
+      bat \
+      cloc \
+      fd-find \
+      lazygit \
+      ;
+
 
