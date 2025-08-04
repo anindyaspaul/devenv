@@ -1,0 +1,30 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install k8s toolchain
+install:
+    nix profile add \
+      nixpkgs#kubectl \
+      nixpkgs#krew \
+      nixpkgs#kubernetes-helm \
+      nixpkgs#k9s \
+    ;
+
+# Configure k8s toolchain
+configure:
+    @echo "Stowing configs"
+    stow .
+
+
+# Post-installation steps
+post-install:
+    krew install kc
+    krew install ctx
+
+# Factory reset configs
+reset:
+    @echo "Resetting configs"
+    stow --delete .
+    rm -rf "$HOME/.config/k9s"
+    rm -rf "$HOME/.krew"

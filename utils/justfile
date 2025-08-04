@@ -21,6 +21,7 @@ _install-ubuntu:
       nixpkgs#gnome-tweaks \
       nixpkgs#lazygit \
       nixpkgs#ripgrep \
+      nixpkgs#tree \
       ;
 
     sudo snap install --classic obsidian

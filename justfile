@@ -6,6 +6,7 @@ mod fzf
 mod ghostty
 mod homebrew
 mod intellij
+mod k8s
 mod mise
 mod mocca
 mod nix

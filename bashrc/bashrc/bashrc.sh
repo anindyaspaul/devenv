@@ -9,6 +9,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias ktl='kubectl'
+
 # Improve history
 shopt -s histappend   # append to the history file, don't overwrite it
 HISTCONTROL=erasedups # remove all previous lines matching current line
