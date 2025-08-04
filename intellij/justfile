@@ -1,0 +1,18 @@
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install intellij IDEA ultimate
+install:
+    @echo "Installing intellij"
+    sudo snap install intellij-idea-ultimate --classic
+
+configure:
+    stow -t $HOME .
+
+# Update intellij
+update:
+
+# Remove 
+remove:
+

@@ -10,17 +10,20 @@ install:
 
 _install-ubuntu:
     sudo apt install -y \
-      bat \
       build-essential \
-      cloc \
-      dconf-editor \
-      fd-find \
-      ripgrep \
-      gnome-tweaks \
       ;
-    brew install \
-      lazygit \
+
+    nix profile add \
+      nixpkgs#bat \
+      nixpkgs#cloc \
+      nixpkgs#dconf-editor \
+      nixpkgs#fd \
+      nixpkgs#gnome-tweaks \
+      nixpkgs#lazygit \
+      nixpkgs#ripgrep \
       ;
+
+    sudo snap install --classic obsidian
 
 _install-fedora:
     sudo dnf copr enable -y \

@@ -5,7 +5,7 @@ help:
 # Install starship
 install:
     @echo "Installing starship"
-    curl -sS https://starship.rs/install.sh | sh
+    nix profile add nixpkgs#starship
 
 # Configure starship
 configure:

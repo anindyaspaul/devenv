@@ -1,0 +1,16 @@
+distro := shell("cat /etc/os-release | grep ^ID= | cut -d = -f 2")
+
+# List available recipes
+help:
+    @just --list --unsorted
+
+# Install nix using determinate systems installer
+install:
+    @echo "Installing nix"
+    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
+# Remove nix using determinate systems uninstaller
+remove:
+    @echo "Uninstalling nix"
+    /nix/nix-installer uninstall
+

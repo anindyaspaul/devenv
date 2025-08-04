@@ -1,0 +1,18 @@
+" Use system clipboard for copy paste
+set clipboard+=unnamedplus
+" Ignore case when searching
+set ignorecase
+" Don't ignore case when searching with uppercase
+set smartcase
+" Show search result matching so far
+set incsearch
+
+" Disable bell sound
+set visualbell
+
+" Highlight yanked text
+set highlightedyank
+" Use vim-commentary
+set commentary
+" Enable vim navigation in file tree
+set NERDTree

@@ -5,8 +5,10 @@ mod fonts
 mod fzf
 mod ghostty
 mod homebrew
+mod intellij
 mod mise
 mod mocca
+mod nix
 mod nodejs
 mod nvim
 mod sdkman

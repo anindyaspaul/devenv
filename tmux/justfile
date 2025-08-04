@@ -10,7 +10,7 @@ install:
     just _install-{{ distro }}
 
 _install-ubuntu:
-    sudo apt install tmux
+    nix profile add nixpkgs#tmux
 
 _install-fedora:
     sudo dnf install -y tmux
